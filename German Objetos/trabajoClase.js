@@ -56,14 +56,73 @@ getSaldo(){
     return this.#saldo
 }
 #actualizarSaldo(monto){
-    this.getSaldo() += monto
-4
+    this.#saldo += monto
     }
     depositar(monto){
         if (monto > 0){
          this.#actualizarSaldo(monto)
-         
+        } else {
+            console.log("Error, el valor debe ser superior a 0")
         }
+    }
 
+    retirar(monto){
+        if (monto > 0 && monto <= this.#saldo){
+            this.#actualizarSaldo(-monto)
+        } else {
+            console.log(`Saldo insuficiente, tu saldo actual es de ${this.#saldo}`)
+        }
     }
 }
+
+const cuenta1 = new cuentaBancaria
+cuenta1.depositar(100000)
+cuenta1.retirar(32100)
+console.log(`Tu saldo actual es de ${cuenta1.getSaldo()}`)
+
+
+
+class Vehiculo {
+    constructor(marca, modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+    #encenderMotor() {
+        console.log("Motor encendido.");
+    }
+
+    arrancar() {
+        this.#encenderMotor();
+        console.log(`${this.marca} ${this.modelo} está arrancando.`);
+    }
+    mover() {
+        console.log("El vehículo se está moviendo.");
+    }
+}
+
+class Coche extends Vehiculo {
+    constructor(marca, modelo) {
+        super(marca, modelo);
+    }
+
+    mover() {
+        console.log("El coche está conduciendo por la carretera.");
+    }
+}
+
+class Bicicleta extends Vehiculo {
+    constructor(marca, modelo) {
+        super(marca, modelo);
+    }
+
+    mover() {
+        console.log("La bicicleta está pedaleando por el sendero.");
+    }
+}
+
+const coche1 = new Coche("Toyota", "Corolla");
+coche1.arrancar(); 
+coche1.mover();   
+
+const bici1 = new Bicicleta("Cicla", "Montaña");
+bici1.mover();    
