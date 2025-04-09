@@ -11,10 +11,7 @@ class Persona {
     caminar() {
         console.log(`${this.getNombre()} está caminando`)
     }
-    setEdad(edad) {
-        this.edad = edad
-        console.log(`${this.getNombre()} tiene ${this.edad} años`)
-    }
+
 }
 
 class Empleado extends Persona {
@@ -33,17 +30,21 @@ class Empleado extends Persona {
     trabajar() {
         console.log(`${this.getNombre()} está trabajando`)
     }
+    setEdad(edad) {
+        this.edad = edad
+        console.log(`${this.getNombre()} tiene ${this.edad} años`)
+    }
 }
 
 
 
 const persona1 = new Persona("Juan David")
 persona1.caminar()
-persona1.setEdad(20)
 
 const empleado1 = new Empleado("Juan David", 50000)
 empleado1.trabajar()
 empleado1.setSalario(150000)
+empleado1.setEdad(20)
 
 // Cuenta bancaria
 
@@ -80,7 +81,7 @@ cuenta1.depositar(100000)
 cuenta1.retirar(32100)
 console.log(`Tu saldo actual es de ${cuenta1.getSaldo()}`)
 
-
+// vehiculo
 
 class Vehiculo {
     constructor(marca, modelo) {
@@ -126,3 +127,28 @@ coche1.mover();
 
 const bici1 = new Bicicleta("Cicla", "Montaña");
 bici1.mover();    
+ 
+
+// EmpresaTransporte
+
+class EmpresaTransporte {
+    static totalEmpleados = 0
+    
+    static registrarEmpleado(){
+        this.totalEmpleados ++
+    }
+
+    asignarVehiculo(empleado, vehiculo){
+        console.log(`El empleado ${empleado} está trabjando en el vehiculo ${vehiculo}`)
+    }
+}
+
+const empresa1 = new EmpresaTransporte()
+EmpresaTransporte.registrarEmpleado()
+EmpresaTransporte.registrarEmpleado()
+EmpresaTransporte.registrarEmpleado()
+EmpresaTransporte.registrarEmpleado()
+EmpresaTransporte.registrarEmpleado()
+EmpresaTransporte.registrarEmpleado()
+empresa1.asignarVehiculo("Juan", "Toyota")
+console.log(`El total de empleados registrados es de ${EmpresaTransporte.totalEmpleados}`)
